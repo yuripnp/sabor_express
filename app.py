@@ -15,6 +15,14 @@ def exibir_logo():
       
     """)
 
+def opcao_invalida():
+
+    # Exibe mensagem de opção inválida
+    print('Opção inválida. Tente novamente.\n')
+    print('Digite uma tecla para voltar ao menu principal')
+    os.system('cls' if os.name == 'nt' else 'clear')
+    main()
+
 def exibir_menu():
     # Exibe o menu de opções
     print("Menu de Opções:")
@@ -26,10 +34,13 @@ def exibir_menu():
 
 def entrada_usuario():
     # Recebe a escolha do usuário
-    escolha = int(input("Escolha uma opção: "))
-    print(f"voce escolheu a opção {escolha}")
-    print()
-    return escolha
+    try:
+        escolha = int(input("Escolha uma opção: "))
+        print(f"voce escolheu a opção {escolha}")
+        print()
+        return escolha
+    except ValueError:
+        opcao_invalida()
 
 def opcao(escolha):
     if escolha < 1 or escolha > 4:
@@ -74,7 +85,6 @@ def escolha_dois(restaurantes):
         print(f"{i + 1}. {restaurante['nome']} - {restaurante['endereco']} - {restaurante['telefone']} - {status}")
     print()
 
-
 def escolha_tres(restaurantes):
 
 
@@ -98,3 +108,4 @@ def main():
 if __name__ == "__main__":
     # Executa o programa
     main()
+    
