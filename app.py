@@ -2,8 +2,9 @@ import os
 # Programa Sabor Açaí
 
 def exibir_logo():
-    # Exibe o logo do programa
-    # Exibe o nome da loja
+    ''' Exibe o logo do programa encontrado
+    digitando no google fsymbols'''
+
     print("""
 
     ███████╗░█████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
@@ -16,7 +17,9 @@ def exibir_logo():
     """)
 
 def opcao_invalida():
-
+    ''' 
+    Exibe mensagem de opção inválida e retorna ao menu principal 
+    '''
     # Exibe mensagem de opção inválida
     print('Opção inválida. Tente novamente.\n')
     print('Digite uma tecla para voltar ao menu principal')
@@ -24,7 +27,9 @@ def opcao_invalida():
     main()
 
 def exibir_menu():
-    # Exibe o menu de opções
+    ''' 
+    menu principal do programa 
+    '''
     print("Menu de Opções:")
     print("1. Cadastrar Restaurantes")
     print("2. Listar Restaurantes")
@@ -33,7 +38,8 @@ def exibir_menu():
     print()
 
 def entrada_usuario():
-    # Recebe a escolha do usuário
+    '''
+    Lê a entrada do usuário e retorna a opção escolhida'''
     try:
         escolha = int(input("Escolha uma opção: "))
         print(f"voce escolheu a opção {escolha}")
@@ -43,6 +49,18 @@ def entrada_usuario():
         opcao_invalida()
 
 def opcao(escolha):
+    '''
+    Executa a opção escolhida pelo usuário
+
+    Argumentos:
+    - escolha (int): A opção escolhida pelo usuário
+    Input:
+    - escolha: int
+    - A opção escolhida pelo usuário
+    Output:
+    - funcao correspondente
+
+    '''
     if escolha < 1 or escolha > 4:
         print("Opção inválida. Tente novamente.")
     else:
@@ -70,7 +88,14 @@ def opcao(escolha):
     print("Saindo do programa...")
 
 def escolha_um(restaurantes):
-    # Cadastra um novo restaurante
+    '''
+    Cadastra um novo restaurante
+    Input:
+    - restaurantes: list
+    - Lista de restaurantes cadastrados
+    Output:
+    - update na lista de restaurantes
+    '''
     nome = input("Digite o nome do restaurante: ")
     endereco = input("Digite o endereço do restaurante: ")
     telefone = input("Digite o telefone do restaurante: ")
@@ -79,16 +104,18 @@ def escolha_um(restaurantes):
     print(f"Restaurante {nome} cadastrado com sucesso!")
     
 def escolha_dois(restaurantes):
+    '''
+    Lista os restaurantes cadastrados
+    '''
     print("Restaurantes cadastrados:")
     for i, restaurante in enumerate(restaurantes):
-        status = "Ativo" if restaurante["ativo"] else "Inativo"
+        status = "Ativo" if restaurante["ativo"] else "Inativo" # ternário
         print(f"{i + 1}. {restaurante['nome']} - {restaurante['endereco']} - {restaurante['telefone']} - {status}")
     print()
 
 def escolha_tres(restaurantes):
-
-
-    # Ativa um restaurante
+    '''
+    Ativa um restaurante'''
     nome = input("Digite o nome do restaurante a ser ativado: ")
     for restaurante in restaurantes:
         if restaurante["nome"] == nome:
@@ -99,6 +126,9 @@ def escolha_tres(restaurantes):
         print(f"Restaurante {nome} não encontrado.")
 
 def main():
+    '''
+    Função principal do programa
+    '''
     exibir_logo()
     exibir_menu()
     escolha = entrada_usuario()
